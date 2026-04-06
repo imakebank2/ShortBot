@@ -14,7 +14,7 @@ Requires [Python](https://www.python.org/) installed in PATH (preferably the lat
 
 #### 0. Navigate to the bot's folder
 ```
-cd <path-to-folder>\ShortBot
+cd <path-to-folder>
 ```
 Replace `<path-to-folder>` with the actual path
 
