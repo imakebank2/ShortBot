@@ -16,7 +16,7 @@ Requires [Python](https://www.python.org/) installed in PATH (preferably the lat
 ```
 cd <path-to-folder>
 ```
-Replace `<path-to-folder>` with the actual path
+Replace `<path-to-folder>` with the actual path of the project's directory
 
 #### 1. Create a virtual environment (recommended)
 ```
