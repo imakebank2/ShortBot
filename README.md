@@ -1,4 +1,4 @@
-# ShortBot
+# Shortbot
 A bot created for the Short Gang's discord server. Made for fun with no expectations. Anyone is welcome to contribute :)
 
 ## Setup
