@@ -25,7 +25,7 @@ func main() {
 	}
 
 	// Events bot can receive (should be the minimum possible for least overhead)
-	session.Identify.Intents = discordgo.IntentsAllWithoutPrivileged | discordgo.IntentsMessageContent
+	session.Identify.Intents = discordgo.IntentsAllWithoutPrivileged | discordgo.IntentMessageContent
 
 	// session.AddHandler()
 
