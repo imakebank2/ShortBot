@@ -6,6 +6,8 @@ import (
 	"os/signal"
 	"syscall"
 
+	"github.com/imakebank2/shortbot/handlers"
+
 	"github.com/bwmarrin/discordgo"
 	"github.com/joho/godotenv"
 )
@@ -24,18 +26,11 @@ func main() {
 		log.Fatal(err)
 	}
 
+	// Add handlers here:
+	session.AddHandler(handlers.SendSup)
+
 	// Events bot can receive (should be the minimum possible for least overhead)
 	session.Identify.Intents = discordgo.IntentsAllWithoutPrivileged | discordgo.IntentMessageContent
-
-	_, err = os.ReadDir("commands")
-
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	// for command := range commands {
-	// 	session.AddHandler()
-	// }
 
 	if err = session.Open(); err != nil {
 		log.Fatal(err)
@@ -53,11 +48,6 @@ func main() {
 	stop := make(chan os.Signal, 1)
 	signal.Notify(stop, syscall.SIGINT, syscall.SIGTERM, os.Interrupt)
 	<-stop
-}
-
-// Test example: Sends "sup" whenever someone else says "sup"
-func sendSup() {
-
 }
 
 // "Rewriting" it from Python to Go since it is way better for free/cheap hosting since it is much more performant + uses less storage and ram
