@@ -12,7 +12,7 @@ type Command struct {
 	Action      func(*discordgo.Session, *discordgo.InteractionCreate)
 }
 
-func (c Command) Make(s *discordgo.Session) {
+func (c Command) Register(s *discordgo.Session) {
 	_, err := s.ApplicationCommandCreate(s.State.Application.ID, "",
 		&discordgo.ApplicationCommand{
 			Name:        c.Name,
