@@ -6,6 +6,7 @@ import (
 	"os/signal"
 	"syscall"
 
+	"github.com/imakebank2/shortbot/commands"
 	"github.com/imakebank2/shortbot/eventhandlers"
 
 	"github.com/bwmarrin/discordgo"
@@ -16,10 +17,15 @@ func main() {
 	var err error
 
 	if err = godotenv.Load(); err != nil {
-		log.Fatal(err)
+		log.Fatal("Error loading .env file. Make you you create it from .env.example.")
 	}
 
 	token := os.Getenv("DISCORD_BOT_TOKEN")
+
+	if token == "" {
+		log.Fatal("Paste the bot token (from Discord developer portal) into DISCORD_BOT_TOKEN.")
+	}
+
 	session, err := discordgo.New("Bot " + token)
 
 	if err != nil {
@@ -28,9 +34,10 @@ func main() {
 
 	// Add event handlers here:
 	session.AddHandler(eventhandlers.MessageCreate)
+	session.AddHandler(eventhandlers.CommandManager)
 
 	// Events bot can receive (should be the minimum possible for least overhead)
-	session.Identify.Intents = discordgo.IntentsAllWithoutPrivileged
+	session.Identify.Intents = discordgo.IntentsAll
 
 	if err = session.Open(); err != nil {
 		log.Fatal(err)
@@ -39,10 +46,12 @@ func main() {
 	defer log.Println("Bot offline.")
 	defer session.Close()
 
+	commands.RegisterCommands(session)
+
 	log.Println("Bot online! Press CTRL-C to exit.")
 
-	botChannelID := "1490700697681924147" // Channel ID of bots-arena
-	session.ChannelMessageSend(botChannelID, "I am online!")
+	// botChannelID := "1490700697681924147" // Channel ID of bots-arena
+	// session.ChannelMessageSend(botChannelID, "I am online!")
 
 	// Blocks until CTRL-C or other signal is received
 	stop := make(chan os.Signal, 1)
