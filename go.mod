@@ -1,4 +1,4 @@
-module shortbot/main
+module github.com/imakebank2/shortbot
 
 go 1.26.1
 
