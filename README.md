@@ -3,8 +3,6 @@ The official bot of the Short Gang's Discord server. What does it do?
 
 Made for fun with no expectations. Anyone can contribute :)
 
-Also, I wrote this in Go because its syntax is similar to Python but is way more computationally efficient, so in the 0.01% chance that this bot is externally hosted you can *maybe* save ~$1 a month? Performance is absolutely critical.
-
 ## How to run the bot/contribute
 Software: [Go](https://go.dev/) and [Git](https://git-scm.com/)
 1. Clone the repository (fork it if you want to contribute).
