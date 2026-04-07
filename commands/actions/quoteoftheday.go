@@ -2,11 +2,11 @@ package actions
 
 import (
 	"log"
-	"math/rand/v2"
 
 	"github.com/bwmarrin/discordgo"
 )
 
+// Says a random quote from shortgang-quotes channel
 func QuoteOfTheDay(s *discordgo.Session, i *discordgo.InteractionCreate) {
 	msgs, err := s.ChannelMessages("1490700344852873328", 100, "", "", "")
 
@@ -15,12 +15,12 @@ func QuoteOfTheDay(s *discordgo.Session, i *discordgo.InteractionCreate) {
 		return
 	}
 
-	randomIndex := rand.IntN(len(msgs))
-	quote := msgs[randomIndex]
-	s.InteractionRespond(i.Interaction, &discordgo.InteractionResponse{
-		Type: discordgo.InteractionResponseChannelMessageWithSource,
-		Data: &discordgo.InteractionResponseData{
-			Content: quote.Content,
-		},
-	})
+	quote, err := randomElementFrom(msgs)
+
+	if err != nil {
+		log.Println(err)
+		return
+	}
+
+	interactionTextResponse(quote.Content, s, i)
 }

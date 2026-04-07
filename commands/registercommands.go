@@ -7,6 +7,7 @@ import (
 
 var BotCommands = []Command{
 	{"quoteoftheday", "Says a random quote", actions.QuoteOfTheDay},
+	{"randomuser", "Gets a random user", actions.RandomUser},
 }
 
 func RegisterCommands(s *discordgo.Session) {

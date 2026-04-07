@@ -1,14 +1,22 @@
 package responses
 
-import "github.com/bwmarrin/discordgo"
+import (
+	"strings"
 
-// Says sup every time someone says sup
+	"github.com/bwmarrin/discordgo"
+)
+
+// Says "sup" every time a message contains "up"
 func SendSup(s *discordgo.Session, m *discordgo.MessageCreate) {
+	// Ignore messages from the bot itself
 	if m.Author.ID == s.State.User.ID {
 		return
 	}
 
-	if m.Content == "sup" {
+	content := strings.ToLower(m.Content)
+
+	// Check if it contains "up" anywhere
+	if strings.Contains(content, "up") {
 		s.ChannelMessageSend(m.ChannelID, "sup")
 	}
 }
