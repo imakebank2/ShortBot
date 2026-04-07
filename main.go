@@ -6,7 +6,7 @@ import (
 	"os/signal"
 	"syscall"
 
-	"github.com/imakebank2/shortbot/handlers"
+	"github.com/imakebank2/shortbot/eventhandlers"
 
 	"github.com/bwmarrin/discordgo"
 	"github.com/joho/godotenv"
@@ -26,11 +26,11 @@ func main() {
 		log.Fatal(err)
 	}
 
-	// Add handlers here:
-	session.AddHandler(handlers.MessageCreate)
+	// Add event handlers here:
+	session.AddHandler(eventhandlers.MessageCreate)
 
 	// Events bot can receive (should be the minimum possible for least overhead)
-	session.Identify.Intents = discordgo.IntentsAllWithoutPrivileged | discordgo.IntentMessageContent
+	session.Identify.Intents = discordgo.IntentsAllWithoutPrivileged
 
 	if err = session.Open(); err != nil {
 		log.Fatal(err)
@@ -41,14 +41,11 @@ func main() {
 
 	log.Println("Bot online! Press CTRL-C to exit.")
 
-	// botChannelID := "1490700697681924147"
-	// session.ChannelMessageSend(botChannelID, "I am online!")
+	botChannelID := "1490700697681924147" // Channel ID of bots-arena
+	session.ChannelMessageSend(botChannelID, "Bot is online!")
 
 	// Blocks until CTRL-C or other signal is received
 	stop := make(chan os.Signal, 1)
 	signal.Notify(stop, syscall.SIGINT, syscall.SIGTERM, os.Interrupt)
 	<-stop
 }
-
-// "Rewriting" it from Python to Go since it is way better for free/cheap hosting since it is much more performant + uses less storage and ram
-// However, barrier to contribution is a bit higher so rip.
