@@ -11,6 +11,6 @@ var BotCommands = []Command{
 
 func RegisterCommands(s *discordgo.Session) {
 	for _, c := range BotCommands {
-		c.Make(s)
+		c.Register(s)
 	}
 }
