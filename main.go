@@ -14,7 +14,7 @@ func main() {
 	var err error
 
 	if err = godotenv.Load(); err != nil {
-		log.Fatal("Error loading .env file")
+		log.Fatal(err)
 	}
 
 	token := os.Getenv("DISCORD_BOT_TOKEN")
@@ -27,7 +27,15 @@ func main() {
 	// Events bot can receive (should be the minimum possible for least overhead)
 	session.Identify.Intents = discordgo.IntentsAllWithoutPrivileged | discordgo.IntentMessageContent
 
-	// session.AddHandler()
+	_, err = os.ReadDir("commands")
+
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	// for command := range commands {
+	// 	session.AddHandler()
+	// }
 
 	if err = session.Open(); err != nil {
 		log.Fatal(err)
@@ -38,13 +46,8 @@ func main() {
 
 	log.Println("Bot online! Press CTRL-C to exit.")
 
-	// Test example
-	//_, err = session.ChannelMessageSend("1490700697681924147", "aaaaa")
-
-	// if err != nil {
-	// 	log.Println(err)
-	// 	return
-	// }
+	// botChannelID := "1490700697681924147"
+	// session.ChannelMessageSend(botChannelID, "I am online!")
 
 	// Blocks until CTRL-C or other signal is received
 	stop := make(chan os.Signal, 1)
