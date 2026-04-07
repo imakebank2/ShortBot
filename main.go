@@ -33,7 +33,7 @@ func main() {
 	}
 
 	// Add event handlers here:
-	session.AddHandler(eventhandlers.MessageCreate)
+	session.AddHandler(eventhandlers.ReponseManager)
 	session.AddHandler(eventhandlers.CommandManager)
 
 	// Events bot can receive (should be the minimum possible for least overhead)

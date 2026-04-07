@@ -5,7 +5,7 @@ import (
 	"github.com/imakebank2/shortbot/commands"
 )
 
-// Manages commands
+// Manages slash commands
 func CommandManager(s *discordgo.Session, i *discordgo.InteractionCreate) {
 	if i.Type != discordgo.InteractionApplicationCommand {
 		return

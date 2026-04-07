@@ -1,4 +1,4 @@
-package commands
+package actions
 
 import (
 	"log"
@@ -17,5 +17,10 @@ func QuoteOfTheDay(s *discordgo.Session, i *discordgo.InteractionCreate) {
 
 	randomIndex := rand.IntN(len(msgs))
 	quote := msgs[randomIndex]
-	s.ChannelMessageSend(i.ChannelID, quote.Content)
+	s.InteractionRespond(i.Interaction, &discordgo.InteractionResponse{
+		Type: discordgo.InteractionResponseChannelMessageWithSource,
+		Data: &discordgo.InteractionResponseData{
+			Content: quote.Content,
+		},
+	})
 }
