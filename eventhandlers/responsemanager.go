@@ -6,7 +6,7 @@ import (
 )
 
 // Manages the bot's automatic (non-command) responses
-// Runs every time someone sends a message
+// Runs every time a message is sent
 func ResponseManager(s *discordgo.Session, m *discordgo.MessageCreate) {
 	responses.SendSup(s, m)
 }
