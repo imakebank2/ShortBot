@@ -15,7 +15,7 @@ func SendSup(s *discordgo.Session, m *discordgo.MessageCreate) {
 
 	content := strings.ToLower(m.Content)
 
-	// Check if it contains "up" anywhere
+	// Check if it contains "sup" anywhere
 	if strings.Contains(content, "sup") {
 		s.ChannelMessageSend(m.ChannelID, "sup")
 	}
