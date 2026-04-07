@@ -50,8 +50,8 @@ func main() {
 
 	log.Println("Bot online! Press CTRL-C to exit.")
 
-	// botChannelID := "1490700697681924147" // Channel ID of bots-arena
-	// session.ChannelMessageSend(botChannelID, "I am online!")
+	botChannelID := "1490700697681924147" // Channel ID of bots-arena
+	session.ChannelMessageSend(botChannelID, "I am online!")
 
 	// Blocks until CTRL-C or other signal is received
 	stop := make(chan os.Signal, 1)
