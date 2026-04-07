@@ -1,6 +1,0 @@
-# Add whatever you need to be ignored
-
-.env
-.venv/
-build/
-*.egg-info/
