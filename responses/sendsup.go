@@ -8,11 +8,6 @@ import (
 
 // Says "sup" every time a message contains "up"
 func SendSup(s *discordgo.Session, m *discordgo.MessageCreate) {
-	// Ignore messages from the bot itself
-	if m.Author.ID == s.State.User.ID {
-		return
-	}
-
 	content := strings.ToLower(m.Content)
 
 	// Check if it contains "up" anywhere

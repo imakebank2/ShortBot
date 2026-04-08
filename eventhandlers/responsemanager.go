@@ -8,6 +8,12 @@ import (
 // Manages the bot's automatic (non-command) responses
 // Runs every time a message is sent
 func ResponseManager(s *discordgo.Session, m *discordgo.MessageCreate) {
+
+	// Ignore messages from the bot itself
+	if m.Author.ID == s.State.User.ID {
+		return
+	}
+
 	responses.SendSup(s, m)
-	responses.SayShaun(s, m)
+	responses.ReplaceSean(s, m)
 }

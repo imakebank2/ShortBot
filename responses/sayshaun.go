@@ -6,18 +6,13 @@ import (
 	"github.com/bwmarrin/discordgo"
 )
 
-// SayShaun replaces "tion" with "SHAUN" in words and sends the modified message
-func SayShaun(s *discordgo.Session, m *discordgo.MessageCreate) {
-	// Ignore messages from the bot itself
-	if m.Author.ID == s.State.User.ID {
-		return
-	}
-
+// Replaces "tion" with "SEAN" in words and sends the modified message
+func ReplaceSean(s *discordgo.Session, m *discordgo.MessageCreate) {
 	content := strings.Fields(strings.ToUpper(m.Content))
 
 	for _, word := range content {
 		if strings.Contains(word, "TION") {
-			s.ChannelMessageSendReply(m.ChannelID, strings.ReplaceAll(word, "TION", "**SHAUN**"), m.Reference())
+			s.ChannelMessageSendReply(m.ChannelID, strings.ReplaceAll(word, "TION", "**SEAN**"), m.Reference())
 		}
 	}
 }
