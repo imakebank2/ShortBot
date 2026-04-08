@@ -8,7 +8,24 @@ import (
 
 // Says a random quote from shortgang-quotes channel
 func QuoteOfTheDay(s *discordgo.Session, i *discordgo.InteractionCreate) {
-	msgs, err := s.ChannelMessages("1490700344852873328", 100, "", "", "")
+
+	channels, err := s.GuildChannels(i.GuildID)
+
+	if err != nil {
+		log.Println(err)
+		return
+	}
+
+	var channelID string
+
+	for _, c := range channels {
+		if c.Name == "shortgang-quotes" {
+			channelID = c.ID
+			break
+		}
+	}
+
+	msgs, err := s.ChannelMessages(channelID, 100, "", "", "")
 
 	if err != nil {
 		log.Println(err)
