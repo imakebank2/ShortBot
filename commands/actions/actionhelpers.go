@@ -1,3 +1,5 @@
+// Commonly used functions for commands can be added here
+
 package actions
 
 import (
