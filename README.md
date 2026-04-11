@@ -12,3 +12,9 @@ Software: [Go](https://go.dev/) and [Git](https://git-scm.com/)
 5. Make changes.
 6. Create a pull request.
 7. Profit?
+
+## Specific Contributions
+### Adding a command
+Create the command in [commands/actions](/commands/actions). Commands are of type `func(*discordgo.Session, *discordgo.InteractionCreate)`. Then add your command to BotCommands in [/commands/registercommands.go](/commands/registercommands.go). 
+### Adding an automatic response
+Create the response in [responses](responses). Responses are of type `func(s *discordgo.Session, m *discordgo.MessageCreate)`. Then add your response in [eventhandlers/responsemanager.go](eventhandlers/responsemanager.go).
