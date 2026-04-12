@@ -14,7 +14,7 @@ func ResponseManager(s *discordgo.Session, m *discordgo.MessageCreate) {
 		return
 	}
 
-	// Add responses here
+	// Add your responses here
 	responses.SendSup(s, m)
 	responses.ReplaceSean(s, m)
 }
