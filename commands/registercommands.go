@@ -5,6 +5,7 @@ import (
 	"github.com/imakebank2/shortbot/commands/actions"
 )
 
+// Add your commands here
 var BotCommands = []Command{
 	{"quoteoftheday", "Says a random quote", actions.QuoteOfTheDay},
 	{"randomuser", "Gets a random user", actions.RandomUser},
