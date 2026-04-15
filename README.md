@@ -18,3 +18,5 @@ Software: [Go](https://go.dev/) and [Git](https://git-scm.com/)
 Create the command in  [/commands/actions](/commands/actions). Commands are of type `func(*discordgo.Session, *discordgo.InteractionCreate)`. Then add your command to BotCommands in [/commands/registercommands.go](/commands/registercommands.go). 
 ### Adding an automatic response
 Create the response in [/responses](responses). Responses are of type `func(s *discordgo.Session, m *discordgo.MessageCreate)`. Then add your response in [/eventhandlers/responsemanager.go](eventhandlers/responsemanager.go).
+
+<img width="839" height="429" alt="image" src="https://github.com/user-attachments/assets/dd83f680-6579-4461-b93f-1a673af67f59" />
