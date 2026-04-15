@@ -6,13 +6,23 @@ import (
 	"github.com/bwmarrin/discordgo"
 )
 
-// Replaces "tion" with "SEAN" in words and sends the modified message
+var letter_combinations = []string{
+	"TION",
+	"SSION",
+	"CION",
+	"CIAN",
+}
+
+// Replaces specific letter combinations with "SEAN" in words and sends the modified message
 func ReplaceSean(s *discordgo.Session, m *discordgo.MessageCreate) {
 	content := strings.Fields(strings.ToUpper(m.Content))
 
 	for _, word := range content {
-		if strings.Contains(word, "TION") {
-			s.ChannelMessageSendReply(m.ChannelID, strings.ReplaceAll(word, "TION", "**SEAN**"), m.Reference())
+		for _, combo := range letter_combinations {
+			if strings.Contains(word, combo) {
+				s.ChannelMessageSendReply(m.ChannelID, strings.Replace(word, combo, "**SEAN**", 1), m.Reference())
+				break
+			}
 		}
 	}
 }
