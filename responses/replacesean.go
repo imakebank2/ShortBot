@@ -11,6 +11,7 @@ var letter_combinations = []string{
 	"SSION",
 	"CION",
 	"CIAN",
+	"CEAN",
 }
 
 // Replaces specific letter combinations with "SEAN" in words and sends the modified message
