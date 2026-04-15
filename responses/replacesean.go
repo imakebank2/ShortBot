@@ -8,7 +8,7 @@ import (
 
 var letter_combinations = []string{
 	"TION",
-	"SION",
+	"SSION",
 	"CION",
 	"CIAN",
 	"CEAN",
