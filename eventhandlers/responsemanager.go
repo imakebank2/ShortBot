@@ -5,8 +5,15 @@ import (
 	"github.com/imakebank2/shortbot/responses"
 )
 
+// Add your responses here
+var botresponses = []func(*discordgo.Session, *discordgo.MessageCreate){
+	responses.SendSup,
+	responses.ReplaceSean,
+	responses.SixSeven,
+}
+
 // Manages the bot's automatic (non-command) responses
-// Runs every time a message is sent
+// Executes every time a message is sent
 func ResponseManager(s *discordgo.Session, m *discordgo.MessageCreate) {
 
 	// Ignore messages from the bot itself
@@ -14,8 +21,7 @@ func ResponseManager(s *discordgo.Session, m *discordgo.MessageCreate) {
 		return
 	}
 
-	// Add your responses here
-	responses.SendSup(s, m)
-	responses.ReplaceSean(s, m)
-	responses.SixSeven(s, m)
+	for _, response := range botresponses {
+		response(s, m)
+	}
 }
