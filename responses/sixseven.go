@@ -121,7 +121,7 @@ func SixSeven(s *discordgo.Session, m *discordgo.MessageCreate) {
 
 			s.ChannelMessageSendReply(
 				m.ChannelID,
-				fmt.Sprintf("%s triggered 67\n Rarity: %s\n\"%s\"", m.Author.Username, key, value),
+				fmt.Sprintf("%s triggered 67\nRarity: %s\n\"%s\"", m.Author.Username, key, value),
 				m.Reference(),
 			)
 
