@@ -3,9 +3,6 @@
 package actions
 
 import (
-	"fmt"
-	"math/rand/v2"
-
 	"github.com/bwmarrin/discordgo"
 )
 
@@ -17,13 +14,4 @@ func interactionTextResponse(text string, s *discordgo.Session, i *discordgo.Int
 			Content: text,
 		},
 	})
-}
-
-func randomElementFrom[T any](s []T) (T, error) {
-	if len(s) == 0 {
-		var zero T
-		return zero, fmt.Errorf("Type is empty.")
-	}
-
-	return s[rand.IntN(len(s))], nil
 }

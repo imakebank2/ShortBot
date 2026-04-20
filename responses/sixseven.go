@@ -6,11 +6,11 @@ import (
 	"strings"
 
 	"github.com/bwmarrin/discordgo"
+	"github.com/imakebank2/shortbot/utils"
 )
 
 // SIX SEVENNNNN
 // Based from ChatGPT's creativity: https://chatgpt.com/s/t_69e6046a51b8819180de7d7605fb1327
-// I'm rushing it but the structure could be way better
 
 var triggers = []string{
 	"1", "2", "3", "4", "5", "6", "7", "8", "9", "0",
@@ -73,17 +73,7 @@ var mythic = []string{
 	"This is the last stable version of meaning.",
 }
 
-// var responses = map[string][]string{
-// 	"🟩 COMMON — 69.5%":                     common,
-// 	"🟨 UNCOMMON — 20%":                     uncommon,
-// 	"🟧 RARE — 8%":                          rare,
-// 	"🟥 EPIC — 2%":                          epic,
-// 	"🟪 LEGENDARY EXTREMELY RARE — 0.49%":   legendary,
-// 	"🟫 MYTHIC / 0.01% (Ultra-Secret Drop)": mythic,
-// }
-
 func SixSeven(s *discordgo.Session, m *discordgo.MessageCreate) {
-	r := rand.IntN(10000)
 
 	var key string
 	var value string
@@ -93,48 +83,41 @@ func SixSeven(s *discordgo.Session, m *discordgo.MessageCreate) {
 	for _, trigger := range triggers {
 		if strings.Contains(content, trigger) {
 
+			n := rand.IntN(10000)
+
 			switch {
-			case r < 6950:
+			case n < 6950:
 				key = "🟩 COMMON — 69.5%"
-				value = common[rand.IntN(len(common))]
+				value, _ = utils.GetRandomElement(common)
 
-			case r < 8950:
+			case n < 8950:
 				key = "🟨 UNCOMMON — 20%"
-				value = uncommon[rand.IntN(len(uncommon))]
+				value, _ = utils.GetRandomElement(uncommon)
 
-			case r < 9750:
+			case n < 9750:
 				key = "🟧 RARE — 8%"
-				value = rare[rand.IntN(len(rare))]
+				value, _ = utils.GetRandomElement(rare)
 
-			case r < 9950:
+			case n < 9950:
 				key = "🟥 EPIC — 2%"
-				value = epic[rand.IntN(len(epic))]
+				value, _ = utils.GetRandomElement(epic)
 
-			case r < 9999:
+			case n < 9999:
 				key = "🟪 LEGENDARY EXTREMELY RARE — 0.49%"
-				value = legendary[rand.IntN(len(legendary))]
+				value, _ = utils.GetRandomElement(legendary)
 
 			default:
 				key = "🟫 MYTHIC / 0.01% (Ultra-Secret Drop)"
-				value = mythic[rand.IntN(len(mythic))]
+				value, _ = utils.GetRandomElement(mythic)
 			}
 
 			s.ChannelMessageSendReply(
 				m.ChannelID,
-				fmt.Sprintf("%s triggered 67\nRarity: %s\n\"%s\"", m.Author.Username, key, value),
+				fmt.Sprintf("**%s** triggered 67.\nRarity: %s\n\"%s\"", m.Author.DisplayName(), key, value),
 				m.Reference(),
 			)
 
 			break
 		}
 	}
-}
-
-func randomElementFrom[T any](s []T) (T, error) {
-	if len(s) == 0 {
-		var zero T
-		return zero, fmt.Errorf("Type is empty.")
-	}
-
-	return s[rand.IntN(len(s))], nil
 }

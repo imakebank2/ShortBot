@@ -4,6 +4,7 @@ import (
 	"log"
 
 	"github.com/bwmarrin/discordgo"
+	"github.com/imakebank2/shortbot/utils"
 )
 
 // Says a random user from the list (excluding apps)
@@ -22,7 +23,7 @@ func RandomUser(s *discordgo.Session, i *discordgo.InteractionCreate) {
 		}
 	}
 
-	humanMember, err := randomElementFrom(humanMembers)
+	humanMember, err := utils.GetRandomElement(humanMembers)
 
 	if err != nil {
 		log.Println(err)
