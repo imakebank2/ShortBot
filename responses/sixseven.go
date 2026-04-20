@@ -107,13 +107,13 @@ func SixSeven(s *discordgo.Session, m *discordgo.MessageCreate) {
 				value, _ = utils.GetRandomElement(legendary)
 
 			default:
-				key = "🟫 MYTHIC / 0.01% (Ultra-Secret Drop)"
+				key = "🟫 MYTHIC / 0.01% (Ultra-Secret Drop 🔥)"
 				value, _ = utils.GetRandomElement(mythic)
 			}
 
 			s.ChannelMessageSendReply(
 				m.ChannelID,
-				fmt.Sprintf("**%s** triggered 67.\nRarity: %s\n*\"%s\"*", m.Author.DisplayName(), key, value),
+				fmt.Sprintf("%s triggered 67.\n***Rarity:*** **%s**\n*\"%s\"*", m.Author.DisplayName(), key, value),
 				m.Reference(),
 			)
 
