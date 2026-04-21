@@ -11,6 +11,7 @@ var BotCommands = []Command{
 	{"randomuser", "Gets a random user", actions.RandomUser, nil},
 	{"67", "Info about the 67.", actions.SixEvenInfo, nil},
 	{"1v1", "1v1 someone", actions.OneVsOne, actions.OneVsOneOptions},
+	{"isbrocooked", "Is brotato chip cooked to the brim 🥀😭", actions.IsBroCooked, nil},
 }
 
 func RegisterCommands(s *discordgo.Session) {
