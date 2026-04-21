@@ -30,5 +30,5 @@ func RandomUser(s *discordgo.Session, i *discordgo.InteractionCreate) {
 		return
 	}
 
-	interactionTextResponse(humanMember.User.Username, s, i)
+	interactionTextResponse(humanMember.User.DisplayName(), s, i)
 }

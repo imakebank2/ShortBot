@@ -19,8 +19,8 @@ var triggers = []string{
 
 var common = []string{
 	"Not equal. Not fair. Just 67.",
-	"This is a 67 situation",
-	"67 initiated. Repayment pending",
+	"This is a 67 situation.",
+	"67 initiated. Repayment pending.",
 	"Close enough to confuse both parties.",
 	"You thought this was mutual. It’s a 67.",
 	"Balance updated: still 67.",
@@ -33,7 +33,7 @@ var uncommon = []string{
 	"Payment deferred indefinitely.",
 	"This handshake comes with consequences.",
 	"A 67 has been established between both parties.",
-	"This agreement is emotionally unstable",
+	"This agreement is emotionally unstable.",
 }
 
 var rare = []string{
@@ -73,7 +73,7 @@ var mythic = []string{
 	"This is the last stable version of meaning.",
 }
 
-func SixSeven(s *discordgo.Session, m *discordgo.MessageCreate) {
+func SixSevenEvent(s *discordgo.Session, m *discordgo.MessageCreate) {
 
 	var key string
 	var value string
@@ -113,7 +113,7 @@ func SixSeven(s *discordgo.Session, m *discordgo.MessageCreate) {
 
 			s.ChannelMessageSendReply(
 				m.ChannelID,
-				fmt.Sprintf("%s triggered 67.\n***Rarity:***  **%s**\n*\"%s\"*", m.Author.DisplayName(), key, value),
+				fmt.Sprintf("%s triggered a 67.\n***Rarity:***  **%s**\n*\"%s\"*", m.Author.DisplayName(), key, value),
 				m.Reference(),
 			)
 

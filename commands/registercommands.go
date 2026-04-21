@@ -7,8 +7,10 @@ import (
 
 // Add your commands here
 var BotCommands = []Command{
-	{"quoteoftheday", "Says a random quote", actions.QuoteOfTheDay},
-	{"randomuser", "Gets a random user", actions.RandomUser},
+	{"quoteoftheday", "Says a random quote from #shortgang-quotes", actions.QuoteOfTheDay, nil},
+	{"randomuser", "Gets a random user", actions.RandomUser, nil},
+	{"67", "Info about the 67.", actions.SixEvenInfo, nil},
+	{"1v1", "1v1 someone", actions.OneVsOne, actions.OneVsOneOptions},
 }
 
 func RegisterCommands(s *discordgo.Session) {

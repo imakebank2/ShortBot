@@ -9,7 +9,7 @@ import (
 var botresponses = []func(*discordgo.Session, *discordgo.MessageCreate){
 	responses.SendSup,
 	responses.ReplaceSean,
-	responses.SixSeven,
+	responses.SixSevenEvent,
 }
 
 // Manages the bot's automatic (non-command) responses

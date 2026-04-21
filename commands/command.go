@@ -10,6 +10,7 @@ type Command struct {
 	Name        string
 	Description string
 	Action      func(*discordgo.Session, *discordgo.InteractionCreate)
+	Options     []*discordgo.ApplicationCommandOption // Arguments
 }
 
 func (c Command) Register(s *discordgo.Session) {
@@ -17,6 +18,7 @@ func (c Command) Register(s *discordgo.Session) {
 		&discordgo.ApplicationCommand{
 			Name:        c.Name,
 			Description: c.Description,
+			Options:     c.Options,
 		})
 
 	if err != nil {
