@@ -7,6 +7,7 @@ import (
 )
 
 // Says "sup" every time a message contains "up"
+// Currently not used
 func SendSup(s *discordgo.Session, m *discordgo.MessageCreate) {
 	content := strings.ToLower(m.Content)
 
