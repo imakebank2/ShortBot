@@ -6,8 +6,7 @@ import (
 )
 
 // Add your responses here
-var botresponses = []func(*discordgo.Session, *discordgo.MessageCreate){
-	responses.SendSup,
+var botResponses = []func(*discordgo.Session, *discordgo.MessageCreate){
 	responses.ReplaceSean,
 	responses.SixSevenEvent,
 }
@@ -21,7 +20,7 @@ func ResponseManager(s *discordgo.Session, m *discordgo.MessageCreate) {
 		return
 	}
 
-	for _, response := range botresponses {
+	for _, response := range botResponses {
 		response(s, m)
 	}
 }
