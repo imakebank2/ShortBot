@@ -110,10 +110,9 @@ func SixSevenEvent(s *discordgo.Session, m *discordgo.MessageCreate) {
 				value, _ = utils.GetRandomElement(mythic)
 			}
 
-			s.ChannelMessageSendReply(
-				m.ChannelID,
+			replyToUserWithoutPing(
 				fmt.Sprintf("%s triggered a 67.\n***Rarity:***  **%s**\n*\"%s\"*", m.Author.DisplayName(), key, value),
-				m.Reference(),
+				s, m,
 			)
 
 			break
