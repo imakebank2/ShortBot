@@ -12,7 +12,7 @@ var BotCommands = []Command{
 	{"67", "Info about the 67.", actions.SixEvenInfo, nil},
 	{"1v1", "1v1 someone", actions.OneVsOne, actions.OneVsOneOptions},
 	{"isbrocooked", "Is brotato chip cooked to the brim 🥀😭", actions.IsBroCooked, nil},
-	{"tungtungtungsahur", "Do not try this at home.", actions.Tung, nil},
+	{"tungtungtungsahur", "Do not try this at home.", actions.TungTungTungSahur, nil},
 }
 
 func RegisterCommands(s *discordgo.Session) {
