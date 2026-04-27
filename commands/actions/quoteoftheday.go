@@ -10,20 +10,11 @@ import (
 // Says a random quote from shortgang-quotes channel
 func QuoteOfTheDay(s *discordgo.Session, i *discordgo.InteractionCreate) {
 
-	channels, err := s.GuildChannels(i.GuildID)
+	channelID, err := utils.GetChannelIDByName(s, "shortgang-quotes")
 
 	if err != nil {
 		log.Println(err)
 		return
-	}
-
-	var channelID string
-
-	for _, c := range channels {
-		if c.Name == "shortgang-quotes" {
-			channelID = c.ID
-			break
-		}
 	}
 
 	msgs, err := s.ChannelMessages(channelID, 100, "", "", "")

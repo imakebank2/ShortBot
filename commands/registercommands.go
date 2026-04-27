@@ -13,9 +13,30 @@ var BotCommands = []Command{
 	{"1v1", "1v1 someone", actions.OneVsOne, actions.OneVsOneOptions},
 	{"isbrocooked", "Is brotato chip cooked to the brim 🥀😭", actions.IsBroCooked, nil},
 	{"tungtungtungsahur", "Do not try this at home.", actions.TungTungTungSahur, nil},
+	{"birthdays", "Get all birthdays", actions.GetBirthdays, nil},
 }
 
 func RegisterCommands(s *discordgo.Session) {
+	// Deregister existing commands
+	// u, err := s.User("@me")
+
+	// if err != nil {
+	// 	log.Fatal(err)
+	// }
+
+	// appID := u.ID
+
+	// commands, _ := s.ApplicationCommands(appID, "")
+
+	// for _, cmd := range commands {
+	// 	err := s.ApplicationCommandDelete(appID, "", cmd.ID)
+	// 	if err != nil {
+	// 		log.Println("failed to delete:", cmd.Name, err)
+	// 	} else {
+	// 		log.Println("deleted:", cmd.Name)
+	// 	}
+	// }
+
 	for _, c := range BotCommands {
 		c.Register(s)
 	}

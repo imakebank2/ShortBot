@@ -6,6 +6,7 @@ import (
 	"os/signal"
 	"syscall"
 
+	"github.com/imakebank2/shortbot/birthdays"
 	"github.com/imakebank2/shortbot/commands"
 	"github.com/imakebank2/shortbot/eventhandlers"
 
@@ -47,6 +48,8 @@ func main() {
 	defer session.Close()
 
 	commands.RegisterCommands(session)
+
+	go birthdays.CheckBirthdays(session, "./birthdays/birthdays.json", "general")
 
 	log.Println("Bot online! Press CTRL-C to exit.")
 

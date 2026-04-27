@@ -1,3 +1,4 @@
 # Add whatever you need to be ignored by Git
 
 .env
+birthdays.json
