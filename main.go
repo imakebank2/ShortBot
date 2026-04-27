@@ -49,7 +49,7 @@ func main() {
 
 	commands.RegisterCommands(session)
 
-	go birthdays.CheckBirthdays(session, "./birthdays/birthdays.json", "general")
+	go birthdays.CheckBirthdays(session, "./birthdays/birthdays.json", "main-chat")
 
 	log.Println("Bot online! Press CTRL-C to exit.")
 
