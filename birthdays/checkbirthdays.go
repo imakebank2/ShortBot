@@ -16,6 +16,17 @@ func CheckBirthdays(s *discordgo.Session, path string, channelName string) {
 		return
 	}
 
+	// Check if birthdays can actually be loaded
+	birthdays, err := LoadBirthdays(path)
+
+	if err != nil {
+		log.Println(err)
+		return
+	} else {
+		log.Println("Birthdays found")
+		log.Println(birthdays)
+	}
+
 	for {
 		now := time.Now().In(loc)
 		nextDay := time.Date(
