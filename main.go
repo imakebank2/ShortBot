@@ -49,9 +49,10 @@ func main() {
 
 	commands.RegisterCommands(session)
 
-	go birthdays.CheckBirthdays(session, "./birthdays/birthdays.json", "main-chat")
-
 	log.Println("Bot online! Press CTRL-C to exit.")
+
+	log.Println("Birthdays calendar has started.")
+	go birthdays.CheckBirthdays(session, "./birthdays/birthdays.json", "main-chat")
 
 	// Blocks until CTRL-C or other signal is received
 	stop := make(chan os.Signal, 1)

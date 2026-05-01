@@ -1,6 +1,7 @@
 package birthdays
 
 import (
+	"fmt"
 	"log"
 	"time"
 
@@ -23,8 +24,7 @@ func CheckBirthdays(s *discordgo.Session, path string, channelName string) {
 		log.Println(err)
 		return
 	} else {
-		log.Println("Birthdays found")
-		log.Println(birthdays)
+		log.Println("Birthdays:", fmt.Sprintf("%v", birthdays))
 	}
 
 	for {
