@@ -22,5 +22,5 @@ func GetBirthdays(s *discordgo.Session, i *discordgo.InteractionCreate) {
 		return
 	}
 
-	interactionTextResponse(reply+"\nIf your birthday isn't on here or is incorrect tell me", s, i)
+	interactionTextResponse(reply+"\nIf your birthday isn't on here or is incorrect tell me.", s, i)
 }

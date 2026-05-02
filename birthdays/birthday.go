@@ -1,6 +1,6 @@
 package birthdays
 
-// birthdays.json isn't uploaded for privacy reasons obviously.
+// birthdays.json isn't uploaded on Github for extra privacy
 
 type Birthday struct {
 	Name  string `json:"name"`

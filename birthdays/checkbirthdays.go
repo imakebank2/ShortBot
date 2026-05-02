@@ -11,7 +11,6 @@ import (
 
 func CheckBirthdays(s *discordgo.Session, path string, channelName string) {
 	loc, err := time.LoadLocation("Australia/Brisbane")
-
 	if err != nil {
 		log.Println(err)
 		return
@@ -19,7 +18,6 @@ func CheckBirthdays(s *discordgo.Session, path string, channelName string) {
 
 	// Check if birthdays can actually be loaded
 	birthdays, err := LoadBirthdays(path)
-
 	if err != nil {
 		log.Println(err)
 		return
@@ -27,17 +25,19 @@ func CheckBirthdays(s *discordgo.Session, path string, channelName string) {
 		log.Println("Birthdays:", fmt.Sprintf("%v", birthdays))
 	}
 
+	channelID, err := utils.GetChannelIDByName(s, channelName)
+	if err != nil {
+		log.Println(err)
+		return
+	}
+
 	for {
 		now := time.Now().In(loc)
 		nextDay := time.Date(
 			now.Year(), now.Month(), now.Day(),
-			6, 0, 0, 0,
+			0, 0, 1, 0,
 			loc,
-		)
-
-		if now.After(nextDay) {
-			nextDay = nextDay.Add(24 * time.Hour)
-		}
+		).AddDate(0, 0, 1)
 
 		waitDuration := time.Until(nextDay)
 		time.Sleep(waitDuration)
@@ -54,16 +54,9 @@ func CheckBirthdays(s *discordgo.Session, path string, channelName string) {
 		month := int(now.Month())
 		day := now.Day()
 
-		channelID, err := utils.GetChannelIDByName(s, channelName)
-
-		if err != nil {
-			log.Println(err)
-			return
-		}
-
 		for _, b := range birthdays {
 			if b.Month == month && b.Day == day {
-				message := "@everyone Today is " + b.Name + "'s birthday! ðŸ¥³ðŸ¥³ðŸ¥³ðŸ¥³ðŸ¥³ðŸ¥³ðŸŽ‰ðŸŽ‰ðŸŽ‰ðŸŽ‰ðŸŽ‰ðŸŽ‰ðŸŽ‰ðŸŽ‰ðŸŽ‰"
+				message := "@everyone Today is " + b.Name + "'s birthday! Happy Birthday! 🥳🎉"
 				_, err := s.ChannelMessageSend(channelID, message)
 				if err != nil {
 					log.Println("Error sending message:", err)
